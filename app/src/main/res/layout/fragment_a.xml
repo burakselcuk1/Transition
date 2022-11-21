@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="49dp"
         android:layout_marginTop="77dp"
-        android:text="@string/hello_blank_fragment"
+        android:textStyle="bold"
+        android:text="@string/go_web_view"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

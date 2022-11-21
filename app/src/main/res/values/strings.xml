@@ -3,4 +3,5 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="burak_baba">Burak Baba</string>
+    <string name="go_web_view">GO WEB VIEW</string>
 </resources>

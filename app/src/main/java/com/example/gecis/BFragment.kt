@@ -8,6 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.Transformation
+import android.webkit.WebResourceError
+import android.webkit.WebResourceRequest
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import com.example.gecis.databinding.FragmentABinding
 import com.example.gecis.databinding.FragmentBBinding
 import kotlin.concurrent.timer
@@ -17,6 +21,8 @@ class BFragment : Fragment() {
 
     private var _binding: FragmentBBinding? = null
     private val binding  get() = _binding!!
+    private val URL = "https://google.com"
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,9 +36,19 @@ class BFragment : Fragment() {
 
         startLoaderAnimate()
 
-        timer(initialDelay = 1000L, period = 1000L ) {
-            endLoaderAnimate()
+
+        binding.webView.webViewClient = object : WebViewClient() {
+            override fun onPageFinished(view: WebView?, url: String?) {
+                endLoaderAnimate()
+            }
+
+            override fun onReceivedError(view: WebView?, request: WebResourceRequest?, error: WebResourceError?) {
+                super.onReceivedError(view, request, error)
+                endLoaderAnimate()
+            }
         }
+        binding.webView.loadUrl(URL)
+
     }
 
     private fun startLoaderAnimate() {
